@@ -7,10 +7,9 @@ import { Search, Grid, Item, Segment } from 'semantic-ui-react';
 class App extends Component {
   render() {
     return (
-      <Grid className='ui container' columns='equal' celled='internally'>
           <Find />
-          <ClientInfo />
-      </Grid>
+          
+      
     );
   }
 }
