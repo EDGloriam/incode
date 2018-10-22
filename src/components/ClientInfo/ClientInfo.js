@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Segment, Item } from 'semantic-ui-react';
 
 
-const ClientInfo = (props) => {
+const clientInfo = (props) => {
   let details = <p>Click Client to see more...</p>;
   
 
@@ -31,4 +31,4 @@ const ClientInfo = (props) => {
   return <div>{details}</div>;
 }
 
-export default ClientInfo;
+export default clientInfo;
