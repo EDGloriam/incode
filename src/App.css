@@ -1,3 +1,12 @@
+#root{
+  padding: 10px;
+}
+/* styles for Avatars (left side) */
+.ui.mini.image{
+  width: 65px;
+}
+
+/* styles for search results */
 .ui.search>.results .result .image{
   overflow: hidden;
   background: 0 0;
@@ -16,4 +25,35 @@
 .ui.search>.results .result .name{
   font-size: 1.5em;
   float: none;
+}
+
+/* styles Clients info (right side) */
+.item{
+  display: flex;
+}
+.item .image img{
+  width: 17em;
+  height: 17em;
+  border-radius: .25em;
+  margin-right: 10px;
+}
+.item .header{
+  font-size: 3em;
+}
+.item span{
+  margin-right: 10px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+/* styles for Client Info */
+
+.Info .invitation{
+  height: -webkit-fill-available;
+  text-align: center;
+  font-size: 2em;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

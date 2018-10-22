@@ -12,15 +12,12 @@ import clientReducer from './reducers/clientReducer';
 
 const allReducer = combineReducers({
   clients: clientReducer
-})
+});
 
-const store = createStore(
-  allReducer,
-  window.devToolsExtension && window.devToolsExtension()
-  );
+const store = createStore(allReducer);
 
-ReactDOM.render(<Provider store={store}><App /></Provider>
-        , document.getElementById('root')
+ReactDOM.render(<Provider store={store}><App /></Provider>, 
+  document.getElementById('root')
 );
 
 serviceWorker.unregister();
