@@ -1,7 +1,8 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 // import { Image } from 'react-native';
-import { Search, Grid, Header, Segment } from 'semantic-ui-react'
+import { Search, Grid,Item, Header, Segment } from 'semantic-ui-react'
+import Client from '../../components/Client/Client'
 
 const source = [{
   "general": {
@@ -109,7 +110,7 @@ const source = [{
   }
 }]
 
-export default class SearchExampleStandard extends Component {
+export default class SearchClients extends Component {
   componentWillMount() {
     this.resetComponent()
   }
@@ -139,10 +140,7 @@ export default class SearchExampleStandard extends Component {
   resultRenderer = (props) => {
     console.log(props);
     return [
-    
-    (
-      <img src={props.general.avatar} className='image'></img>
-    ),
+    <img src={props.general.avatar} className='image' alt='avatar'></img>,
     <div key='content' className='content'>
       {<div className='name'>{props.general.firstName + ' ' +props.general.lastName}</div>}
       {<div className='title'>{props.job.company}</div>}
@@ -153,11 +151,17 @@ export default class SearchExampleStandard extends Component {
 
   render() {
     const { isLoading, value, results } = this.state
-
+    const clients = this.state.results.map((client, index) => {
+      return <Client 
+                key={index} 
+                client={client} 
+                showClientInfo = {this.setClientToShow}/>
+            
+    })
     return (
       <Grid>
-        <Grid.Column width={6}>
-          <Search
+        <Grid.Column width={4}>
+          <Search big
             loading={isLoading}
             onResultSelect={this.handleResultSelect}
             onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
@@ -166,13 +170,13 @@ export default class SearchExampleStandard extends Component {
             value={value}
             {...this.props}
           />
+          <Item.Group>
+            {clients}
+          </Item.Group>
         </Grid.Column>
-        <Grid.Column width={10}>
+        <Grid.Column width={12}>
           <Segment>
-            <Header>State</Header>
-            <pre style={{ overflowX: 'auto' }}>{JSON.stringify(this.state, null, 2)}</pre>
-            <Header>Options</Header>
-            <pre style={{ overflowX: 'auto' }}>{JSON.stringify(source, null, 2)}</pre>
+            
           </Segment>
         </Grid.Column>
       </Grid>
