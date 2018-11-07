@@ -4,6 +4,7 @@ import { Search, Grid,Item, Segment } from 'semantic-ui-react';
 import Client from '../../components/Client/Client';
 import ClientInfo from '../../components/ClientInfo/ClientInfo';
 import { connect } from 'react-redux';
+import { showClient } from '../../store/actions/ClientAction';
 
 
 class SearchClients extends Component {
@@ -44,19 +45,15 @@ class SearchClients extends Component {
       </div>,
   ]}
 
-  setClientToShow = (client) => {
-    this.setState({clientSelected: client});
-  }
-
   render() {
     const { isLoading, value, results } = this.state
     const clients = this.props.clients.map((client, index) => {
       return <Client 
                 key={index} 
                 client={client} 
-                showClientInfo = {this.setClientToShow}/>
+                showClient = {this.props.showClientHandler}/>
     });
-
+    console.log('-----SEARCH--------');
     return (
       <Grid>
         <Grid.Row>
@@ -75,7 +72,7 @@ class SearchClients extends Component {
           </Grid.Column>
           <Grid.Column width={12}>
             <Segment className='Info'>
-              <ClientInfo client={this.state.clientSelected}/>
+              <ClientInfo />
             </Segment>
           </Grid.Column>
         </Grid.Row>
@@ -83,10 +80,17 @@ class SearchClients extends Component {
     )
   }
 }
-
-const mapStateToRpops = state => ({
-  clients: state.clients
+// [4] приклеиваем данные из store
+const mapStateToRpops = store => ({
+  clients: store.clients
 });
+  
+
+const mapDispatchToProps = dispatch => { 
+  return {
+    showClientHandler: client => dispatch(showClient(client))
+  }
+ };
 
 
-export default connect(mapStateToRpops)(SearchClients);
+export default connect(mapStateToRpops, mapDispatchToProps)(SearchClients);

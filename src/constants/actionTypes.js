@@ -1,1 +1,1 @@
-export const UPDATE_CLIENT = 'clients:update';
+export const SHOW_CLIENT = 'client:show';

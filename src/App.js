@@ -7,10 +7,7 @@ import SearchClients from './containers/SearchClients/SearchClients';
 
 class App extends Component {
   render() {
-    return (
-          <SearchClients />
-
-    );
+    return <SearchClients /> 
   }
 }
 
