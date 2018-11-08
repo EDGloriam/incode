@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Item } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { showClient } from '../../store/actions/ClientAction';
+// import { showClient } from '../../store/actions/ClientAction';
 
 class ClientInfo extends Component {
     render(){

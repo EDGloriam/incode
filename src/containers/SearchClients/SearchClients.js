@@ -12,10 +12,10 @@ class SearchClients extends Component {
     this.resetComponent()
   }
 
-  resetComponent = () => this.setState({ isLoading: false, results: [], value: '', clientSelected: false })
+  resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
   handleResultSelect = (e, { result }) => {
-   return this.setState({ value: result, clientSelected: result })
+    this.props.showClientHandler(result);
   }
 
   
